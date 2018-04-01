@@ -1,0 +1,17 @@
+version: '3'
+
+services: 
+  apt-cache-ng:
+    build: "."
+    container_name: my-apt-cacher-ng
+    volumes: 
+      - my-apt-cache-ng-volume:/var/cache/apt-cacher-ng
+    ports: 
+      - "3142:3142"
+    restart: always
+volumes: 
+  my-apt-cache-ng-volume:
+    driver_opts: 
+      type: none
+      device: ./opt/docker/data
+      o: bind
